@@ -1,0 +1,6 @@
+﻿CREATE TABLE [takeda].[LundbeckMatch] (
+  [TAKEDA_ID_1] [int] IDENTITY,
+  CONSTRAINT [PK_LundbeckMatch_TAKEDA_ID_1] PRIMARY KEY CLUSTERED ([TAKEDA_ID_1])
+)
+ON [PRIMARY]
+GO
