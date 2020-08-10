@@ -1,0 +1,6 @@
+﻿SET QUOTED_IDENTIFIER OFF
+GO
+
+CREATE RULE [dbo].[Supported_Rule] AS 
+@list IN ('1389', '0736', '0877');
+GO

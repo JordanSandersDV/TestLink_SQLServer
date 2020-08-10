@@ -1,0 +1,3 @@
+﻿CREATE USER [Supported_User_Crtf]
+  WITHOUT LOGIN
+GO

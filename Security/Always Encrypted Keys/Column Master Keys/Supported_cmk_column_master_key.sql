@@ -1,0 +1,6 @@
+﻿CREATE COLUMN MASTER KEY [Supported_cmk_column_master_key]
+WITH(
+KEY_STORE_PROVIDER_NAME = N'MSSQL_CERTIFICATE_STORE',
+KEY_PATH = N'Current User/Personal/f2260f28d909d21c642a3d8e0b45a830e79a1420'
+)
+GO
