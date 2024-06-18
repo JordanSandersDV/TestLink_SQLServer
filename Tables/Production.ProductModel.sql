@@ -1,0 +1,36 @@
+﻿CREATE TABLE [Production].[ProductModel] (
+  [ProductModelID] [int] IDENTITY,
+  [Name] [dbo].[Name] NOT NULL,
+  [CatalogDescription] [xml] (CONTENT Production.ProductDescriptionSchemaCollection) NULL,
+  [Instructions] [xml] (CONTENT Production.ManuInstructionsSchemaCollection) NULL,
+  [rowguid] [uniqueidentifier] NOT NULL CONSTRAINT [DF_ProductModel_rowguid] DEFAULT (newid()) ROWGUIDCOL,
+  [ModifiedDate] [datetime] NOT NULL CONSTRAINT [DF_ProductModel_ModifiedDate] DEFAULT (getdate()),
+  CONSTRAINT [PK_ProductModel_ProductModelID] PRIMARY KEY CLUSTERED ([ProductModelID])
+)
+ON [PRIMARY]
+TEXTIMAGE_ON [PRIMARY]
+GO
+
+SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+
+CREATE PRIMARY XML INDEX [PXML_ProductModel_Instructions]
+  ON [Production].[ProductModel] ([Instructions])
+GO
+
+SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+
+CREATE PRIMARY XML INDEX [PXML_ProductModel_CatalogDescription]
+  ON [Production].[ProductModel] ([CatalogDescription])
+GO
+
+CREATE UNIQUE INDEX [AK_ProductModel_Name]
+  ON [Production].[ProductModel] ([Name])
+  ON [PRIMARY]
+GO
+
+CREATE UNIQUE INDEX [AK_ProductModel_rowguid]
+  ON [Production].[ProductModel] ([rowguid])
+  ON [PRIMARY]
+GO
