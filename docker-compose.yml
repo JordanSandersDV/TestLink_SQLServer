@@ -1,0 +1,99 @@
+
+services:
+  app:
+    container_name: ${APPHOSTNAME:-appHost}
+    tty: true
+    image: dbfcontainers:5000/dbf_application_base:2016
+    dns:
+      - 10.253.10.7
+      - 192.168.10.5
+      - 192.168.10.22
+    dns_search:
+      - datasoft.local
+    networks:
+      net:
+        aliases:
+          - appHost
+    mem_limit: 4000m
+
+  postgre15:
+    image: dbfcontainers:5000/dbf_pgsql:15.6
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./:c:/backups
+      - ${TEST_ARTIFACTS_FOLDER:-./}:c:/testArtifacts
+    networks:
+      net:
+        aliases:
+          - pglast
+    mem_limit: 4000m
+
+  postgre14:
+    image: dbfcontainers:5000/dbf_pgsql:14.11
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./:c:/backups
+      - ${TEST_ARTIFACTS_FOLDER:-./}:c:/testArtifacts
+    networks:
+      net:
+    mem_limit: 2000m
+
+  postgre13:
+    image: dbfcontainers:5000/dbf_pgsql:13.14
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./:c:/backups
+      - ${TEST_ARTIFACTS_FOLDER:-./}:c:/testArtifacts
+    networks:
+      net:
+    mem_limit: 2000m
+
+  postgre12:
+    image: dbfcontainers:5000/dbf_pgsql:12.18
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./:c:/backups
+      - ${TEST_ARTIFACTS_FOLDER:-./}:c:/testArtifacts
+    networks:
+      net:
+    mem_limit: 2000m
+
+  postgre11:
+    image: dbfcontainers:5000/dbf_pgsql:11.18
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./:c:/backups
+      - ${TEST_ARTIFACTS_FOLDER:-./}:c:/testArtifacts
+    networks:
+      net:
+    mem_limit: 2000m
+
+  postgre10:
+    image: dbfcontainers:5000/dbf_pgsql:10.23
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./:c:/backups
+      - ${TEST_ARTIFACTS_FOLDER:-./}:c:/testArtifacts
+    networks:
+      net:
+    mem_limit: 2000m
+
+  postgre9:
+    image: dbfcontainers:5000/dbf_pgsql:9.6
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./:c:/backups
+      - ${TEST_ARTIFACTS_FOLDER:-./}:c:/testArtifacts
+    networks:
+      net:
+    mem_limit: 2000m
+
+networks:
+  net:
